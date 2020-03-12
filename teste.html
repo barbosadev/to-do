@@ -1,53 +1,15 @@
 <html>
 <head>
-<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/7.10.0/firebase-database.js"></script>
-<script>
-  var firebaseConfig = {
-    apiKey: "AIzaSyAqwmSRNVq5AXm3REP0xZJCV8_kmX_SO8w",
-    authDomain: "to-do-e23e1.firebaseapp.com",
-    databaseURL: "https://to-do-e23e1.firebaseio.com",
-    projectId: "to-do-e23e1",
-    storageBucket: "to-do-e23e1.appspot.com",
-    messagingSenderId: "237197502832",
-    appId: "1:237197502832:web:0b22aeb3f727ff876347b5"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  var database = firebase.database().ref().child('tarefa/');
-
-  database.on('value', function(snapshot){
-    alert(snapshot.child("id").val() + "-" + snapshot.child("autor").val() + "-" + snapshot.child("descricao").val() + "-" + snapshot.child("estado").val() + "-" + snapshot.child("horario").val())
-  });
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.2.3/firebase-firestore.js"></script>
   
-  function writeUserData() {
-    firebase.database().ref('tarefa/').set({
-      autor: "Victor",
-      descricao: "lavar louça",
-      estado: "fazer",
-      horario: "01:10",
-      id: 1
-    });
-  }
-  writeUserData();
-
-  database.on('child_added', function() {
-    addCommentElement("samuel", "varrer", "fazer", "10:00", 2);
-  });
-
-
-
-  alert(database.id);
-  alert(database.autor);
-  alert(database.descricao);
-  alert(database.estado);
-  alert(database.horario);
-  
-
-
-</script>
 </head>
 <body>
+  <div id="tarefas">
 
+  </div>
+  <input type="text" id="txtNovaTarefa" placeholder="Insira a tarefa">
+  <button id="novaTarefa">Nova tarefa</button>
+  <script src="firebase.js"></script>
 </body>
 </html>
