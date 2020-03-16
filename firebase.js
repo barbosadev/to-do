@@ -1,10 +1,6 @@
 var btnNovaTarefa = document.querySelector("#novaTarefa");
 btnNovaTarefa.addEventListener("click", novaTarefa);
-
 var tarefas = document.querySelector("#tarefas");
-
-var data = new Date();
-hoje = data.getDate() + '/' + (data.getMonth() +1) + '/' + data.getFullYear();
 
 var firebaseConfig = {
     apiKey: "AIzaSyAqwmSRNVq5AXm3REP0xZJCV8_kmX_SO8w",
@@ -21,14 +17,16 @@ var db = firebase.firestore();
 
 function atualizarTarefas(){
     tarefas.innerHTML = "";
-    db.collection("tarefas").get().then((querySnapshot) => {
+    db.collection("tarefas").orderBy("data", "desc").get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             tarefas.innerHTML += `${doc.data().tarefa} - ${doc.data().data}` + '<br/>';
         });
     });
 }
 
-function novaTarefa(tarefa){
+function novaTarefa(){
+    var hoje = Date(Date.now());
+    hoje = hoje.toString();
     var txtTarefa = document.querySelector("#txtNovaTarefa");
     db.collection("tarefas").add({
         tarefa: txtTarefa.value,
@@ -40,8 +38,8 @@ function novaTarefa(tarefa){
     }).catch(function(error) {
         console.error("Error adding document: ", error);
     });
+    tarefas.innerHTML = txtTarefa.value +  "<br/>" + tarefas.innerHTML;
     txtTarefa.value = "";
-    atualizarTarefas();
 }
 
 atualizarTarefas();
