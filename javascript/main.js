@@ -31,7 +31,7 @@ new Vue ({
     }, 
     computed: {
         isValid: function () {
-          return this.inputTodo !== '';
+          return this.inputTodo.length > 0;
         }
       }
     
