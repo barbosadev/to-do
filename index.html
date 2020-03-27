@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>To-doApp</title>
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+    </head>
+    <body>
+       
+        <div id="app">
+            <div class="header">
+                Tasks 
+            </div>
+       <div class="boxcont">    
+        <div class="card" v-for="todo in todos">
+        <label class="container"> 
+            <input type="checkbox" >
+            <span class="checkmark"></span>
+            <span class="card-text">{{ todo }}</span>
+          </label>          
+        </div>
+    </div>
+
+        <div class="addhead">
+            
+           <div @click="openInput"><div class="buttonadd"><img src="Vector.png" ></div></div> 
+           
+        </div>
+        <input class="inputTodo" v-model="inputTodo" placeholder="O que você tem que fazer?" ref="inputdo" v-if="inputShow" v-on:keyup.enter="addTodo">
+        <div class="menuInput" v-if="inputShow">
+                <table align="center">
+                    <tr>
+                       <td  @click="inputShow = !inputShow">Cancelar</td>
+                       <td ><input type="submit" value="Inserir" class="insertbtn" @click="addTodo" v-bind:disabled="!isValid"></td></a> 
+                    </tr>
+                </table>
+        </div>
+    </div>
+    
+    <script src="javascript/main.js"></script>
+    </body>
+</html>
+
