@@ -27,12 +27,12 @@
            <div @click="openInput"><div class="buttonadd"><img src="Vector.png" ></div></div> 
            
         </div>
-        <input class="inputTodo" v-model="inputTodo" placeholder="O que você tem que fazer?" ref="inputdo" v-if="inputShow" v-on:keyup.enter="addTodo">
+        <input  class="inputTodo" v-model="inputTodo" placeholder="O que você tem que fazer?" ref="inputdo" v-if="inputShow" v-on:keyup.enter="addTodo" required="">
         <div class="menuInput" v-if="inputShow">
                 <table align="center">
                     <tr>
                        <td  @click="inputShow = !inputShow">Cancelar</td>
-                       <td ><input type="submit" value="Inserir" class="insertbtn" @click="addTodo" v-bind:disabled="!isValid"></td></a> 
+                       <td ><input type="submit" value="Inserir" class="insertbtn" @click="addTodo"></td></a> 
                     </tr>
                 </table>
         </div>
