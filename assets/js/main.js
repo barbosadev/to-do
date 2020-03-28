@@ -20,20 +20,18 @@ new Vue ({
     todos: tarefas,     
   },
   mounted(){
-    /*db.collection("tarefas").orderBy("data", "desc").get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        tarefas.push(`${doc.data().tarefa}`);
-      });
-    });*/
-
     db.collection("tarefas").orderBy("data", "asc").onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        
+
         var jaExiste = false;
         ids.forEach((id)=>{ if(doc.id == id){ jaExiste = true; } }); // Verifica se a tarefa já está no Array para não repetir
 
         if(!jaExiste){ // Adiciona ao Array somente tarefas que não estão nele
-          tarefas.unshift(doc.data().tarefa);
+          tarefas.unshift({
+            'id': doc.id,
+            'tarefa': doc.data().tarefa,
+            'pendente': doc.data().pendente,
+          });
           ids.push(doc.id);
         }
         //id.push(doc.data().id);
@@ -42,8 +40,6 @@ new Vue ({
       //console.log("itens: ", tarefas.join(" ,"));    
       //console.log("itens: ", tarefas.join(" ,"));      
     });
-
-
   },
   methods: {
     openInput: function (){
@@ -61,7 +57,7 @@ new Vue ({
         db.collection("tarefas").add({
           tarefa: this.inputTodo,
           autor: "Lovelace",
-          estado: "Fazer",
+          pendente: true,
           data: hoje
         }).then(function(docRef) {
             console.log("Document written with ID: ", docRef.id);
