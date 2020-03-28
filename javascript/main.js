@@ -26,17 +26,13 @@ new Vue ({
       });
     });*/
 
-    db.collection("tarefas").orderBy("data", "asc").onSnapshot(function(querySnapshot) {
+    db.collection("tarefas").orderBy("data", "asc").onSnapshot((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         
         var jaExiste = false;
-        ids.forEach((id)=>{
-          if(doc.id == id){
-            jaExiste = true;
-          }
-        });
+        ids.forEach((id)=>{ if(doc.id == id){ jaExiste = true; } }); // Verifica se a tarefa já está no Array para não repetir
 
-        if(!jaExiste){
+        if(!jaExiste){ // Adiciona ao Array somente tarefas que não estão nele
           tarefas.unshift(doc.data().tarefa);
           ids.push(doc.id);
         }
