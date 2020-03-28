@@ -67,5 +67,11 @@ new Vue ({
         this.inputTodo = '';
       } 
     },
+    editPendente: function(id, estadoAtual){
+      console.log(id);
+      db.collection("tarefas").doc(id).update({
+        pendente: !estadoAtual
+      });
+    },
   }
 });

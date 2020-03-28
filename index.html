@@ -16,7 +16,7 @@
             <div class="boxcont">    
                 <div class="card" v-for="todo in todos">
                     <label class="container"> 
-                        <input type="checkbox" :checked="!todo.pendente" >
+                        <input type="checkbox" :checked="!todo.pendente" @click="editPendente(todo.id, todo.pendente)">
                         <span class="checkmark"></span>
                         <span class="card-text">{{ todo.tarefa }}</span>
                     </label>          
