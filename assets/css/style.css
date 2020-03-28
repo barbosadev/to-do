@@ -234,3 +234,8 @@ body{
     opacity: 50%;
     color: black;
 }
+
+.inputTodo:hover ~.card:first-child {
+    animation: 4s ease-in 0s 1 slideInFromLeft;
+
+}
