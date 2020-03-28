@@ -26,8 +26,9 @@ new Vue ({
       });
     });*/
 
-    db.collection("tarefas").orderBy("data", "desc").onSnapshot(function(querySnapshot) {
-      querySnapshot.forEach(function(doc) {
+    db.collection("tarefas").orderBy("data", "asc").onSnapshot(function(querySnapshot) {
+      querySnapshot.forEach((doc) => {
+        
         var jaExiste = false;
         ids.forEach((id)=>{
           if(doc.id == id){
