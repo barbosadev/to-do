@@ -86,9 +86,7 @@ body{
     border-radius: 3px;
     width: 94%;
     height: 80px;
-    margin: 10px auto ;
-    animation: 0.5s ease-out 0s 1 slideInFromLeft;
-    
+    margin: 10px auto ;   
 }
 .header {
     box-sizing: border-box;
