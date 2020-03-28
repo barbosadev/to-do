@@ -10,6 +10,7 @@ var firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore();
 let tarefas=[];
+let ids = [];
 
 new Vue ({
   el: '#app',
@@ -27,9 +28,22 @@ new Vue ({
 
     db.collection("tarefas").orderBy("data", "desc").onSnapshot(function(querySnapshot) {
       querySnapshot.forEach(function(doc) {
-        tarefas.push(doc.data().tarefa);
+        var jaExiste = false;
+        ids.forEach((id)=>{
+          if(doc.id == id){
+            jaExiste = true;
+          }
+        });
+
+        if(!jaExiste){
+          tarefas.unshift(doc.data().tarefa);
+          ids.push(doc.id);
+        }
+        //id.push(doc.data().id);
+        console.log(doc.id);
       });
-      console.log("itens: ", tarefas.join(" ,"));      
+      //console.log("itens: ", tarefas.join(" ,"));    
+      //console.log("itens: ", tarefas.join(" ,"));      
     });
 
 
@@ -45,7 +59,6 @@ new Vue ({
       this.inputShow = !this.inputShow; 
       if(this.inputTodo != ''){
         //this.todos.push(this.inputTodo);
-        tarefas = [];
         let hoje = Date(Date.now());
         hoje = hoje.toString();
         db.collection("tarefas").add({
