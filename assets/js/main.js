@@ -49,6 +49,13 @@ new Vue ({
       }, 0);
     },
     addTodo: function(){
+
+      //Animação do primeiro card após inserção.
+      let cardum = document.querySelector(".card:first-child");
+      cardum.style.animation = "";
+      setTimeout(() => cardum.style.animation = "0.4s ease-out 0s 1 slideInFromLeft", 5);
+
+
       this.inputShow = !this.inputShow; 
       if(this.inputTodo != ''){
         //this.todos.push(this.inputTodo);
