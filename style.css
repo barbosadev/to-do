@@ -21,8 +21,6 @@ body{
     width: 0;
 }
 
-
-
 .checkmark{
     position: absolute;
     height: 20px;
@@ -66,10 +64,8 @@ body{
     transform: rotate(45deg);
 }
 
-
 .container {
-    position: relative;
-   
+    position: relative;   
     top: 30px;
     left: 50px;
 }
@@ -78,8 +74,6 @@ body{
     position: absolute;
     left: 50px;
     top: 3px;   
-
-
     width: max-content;
     transition: 0.5s;
 }
@@ -96,7 +90,6 @@ body{
     animation: 0.5s ease-out 0s 1 slideInFromLeft;
     
 }
-
 .header {
     box-sizing: border-box;
     height: 25px;
@@ -105,12 +98,9 @@ body{
     font-size: 20px;
 }
 
-
-
 .addhead{
     height: 100px;
-    width: auto;
-    
+    width: auto;   
     background-color:none;
     position: fixed;
     bottom: 0;
@@ -142,7 +132,7 @@ body{
     top: 16px;
 }
 
- .inputTodo {
+.inputTodo {
     clear: both;
     position: fixed;
     top: 0;
@@ -152,12 +142,8 @@ body{
    font-size: 20px;
     text-align: center;
     background-color: #F2F3F7;
-    animation: 0.3s ease-in 0s 1 slideInFromTop;
-    
-    
-    
+    animation: 0.3s ease-in 0s 1 slideInFromTop;    
 }
-
 
 @keyframes slideInFromLeft {
     0% {
@@ -202,7 +188,6 @@ body{
     }
   }
 
-
 .menuInput{
     position: fixed;
     bottom: 0;
@@ -216,9 +201,8 @@ body{
      width: 100%;
      padding: none;
      margin: none;
-     height: 35px;
-     
- }
+     height: 35px;     
+}
  
 .menuInput table tr td:nth-child(1){
     background-color: #F2F3F7;
@@ -228,10 +212,8 @@ body{
     animation: 0.5s ease-in 0s 1 slideInFromLeft;
 }
 
-
-
 .menuInput table tr td:active {
-        transform: translateY(2px);
+    transform: translateY(2px);
 }
 
 .insertbtn{
@@ -242,21 +224,13 @@ body{
     border-radius: 30px;
     background-color: #78E39C;
     transition: 0.3s;
-    animation: 0.5s ease-in 0s 1 slideInFromRight;
-    
+    animation: 0.5s ease-in 0s 1 slideInFromRight;    
 }
 .insertbtn:active{
     border: none;
-    
-    
 }
 
 .insertbtn:disabled {
     opacity: 50%;
     color: black;
-    
-    
 }
-
-
-
