@@ -29,17 +29,16 @@
                     </div>
                 </div> 
             </div>
-            <input class="inputTodo" v-model="inputTodo" placeholder="O que você tem que fazer?" ref="inputdo" v-if="inputShow" v-on:keyup.enter="addTodo">
+            <input class="inputTodo" :value="inputTodo" @input="e => inputTodo = e.target.value" placeholder="O que você tem que fazer?" ref="inputdo" v-if="inputShow" v-on:keyup.enter="addTodo">
             <div class="menuInput" v-if="inputShow">
                 <table align="center">
                     <tr>
                         <td  @click="inputShow = !inputShow">Cancelar</td>
-                        <td ><input type="submit" value="Inserir" class="insertbtn" @click="addTodo" v-bind:disabled="!isValid"></td></a> 
+                        <td ><input type="submit" value="Inserir" class="insertbtn" @click="addTodo"></td></a> 
                     </tr>
                 </table>
             </div>
         </div>
         <script src="javascript/main.js"></script>
-        <!--<script src="javascript/firebase.js"></script>-->
     </body>
 </html>

@@ -19,11 +19,20 @@ new Vue ({
     todos: tarefas,     
   },
   mounted(){
-    db.collection("tarefas").orderBy("data", "desc").get().then((querySnapshot) => {
+    /*db.collection("tarefas").orderBy("data", "desc").get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         tarefas.push(`${doc.data().tarefa}`);
       });
+    });*/
+
+    db.collection("tarefas").orderBy("data", "desc").onSnapshot(function(querySnapshot) {
+      querySnapshot.forEach(function(doc) {
+        tarefas.push(doc.data().tarefa);
+      });
+      console.log("itens: ", tarefas.join(" ,"));      
     });
+
+
   },
   methods: {
     openInput: function (){
@@ -35,8 +44,8 @@ new Vue ({
     addTodo: function(){
       this.inputShow = !this.inputShow; 
       if(this.inputTodo != ''){
-        this.todos.push(this.inputTodo);
- 
+        //this.todos.push(this.inputTodo);
+        tarefas = [];
         let hoje = Date(Date.now());
         hoje = hoje.toString();
         db.collection("tarefas").add({
@@ -49,13 +58,8 @@ new Vue ({
         }).catch(function(error) {
             console.error("Error adding document: ", error);
         });
-        this.inputTodo = ''; 
+        this.inputTodo = '';
       } 
     },
-  }, 
-  computed: {
-    isValid: function () {
-      return this.inputTodo.length > 0;
-    }
-  }  
+  }
 });
