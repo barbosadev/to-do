@@ -16,7 +16,7 @@
             <div class="boxcont">    
                 <div class="card" v-for="todo in todos">
                     <label class="container"> 
-                        <input type="checkbox" :checked="todo.pendente" >
+                        <input type="checkbox" :checked="!todo.pendente" >
                         <span class="checkmark"></span>
                         <span class="card-text">{{ todo.tarefa }}</span>
                     </label>          
@@ -34,7 +34,6 @@
                 <table align="center">
                     <tr>
                         <td  @click="inputShow = !inputShow">Cancelar</td>
-                        <td ><input type="submit" value="Inserir" class="insertbtn" @click="addTodo"></td></a> 
                         <td ><input type="submit" value="Inserir" class="insertbtn" @click="addTodo" :disabled="!inputTodo"></td></a> 
                     </tr>
                 </table>
