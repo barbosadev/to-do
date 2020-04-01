@@ -26,6 +26,14 @@ new Vue ({
         var jaExiste = false;
         ids.forEach((id)=>{ if(doc.id == id){ jaExiste = true; } }); // Verifica se a tarefa já está no Array para não repetir
 
+        /*tarefas.forEach((tarefa)=>{
+          if((tarefa.id == doc.id) && (tarefa.id == doc.id || tarefa.tarefa != doc.tarefa || tarefa.pendente != doc.pendente)){
+            tarefa.tarefa = doc.tarefa;
+            tarefa.pendente = doc.pendente;
+            jaExiste = true;
+          }
+        });
+        */
         if(!jaExiste){ // Adiciona ao Array somente tarefas que não estão nele
           tarefas.unshift({
             'id': doc.id,
